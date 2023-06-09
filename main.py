@@ -17,9 +17,9 @@ canvas = tk.Tk()
 canvas.geometry ("400x500")
 canvas.title ("Tracker")
 
-f1 = ("poppins", 22, "bold")
-f2 = ("poppins", 20, "bold")
-f3 = ("poppins", 16, "normal")
+f1 = ("arial", 22, "bold")
+f2 = ("arial", 20, "bold")
+f3 = ("arial", 16, "normal")
 
 label = tk.Label(canvas, text="BitCoin Price", font=f1)
 label.pack(anchor='w', padx=10, pady=10) 
