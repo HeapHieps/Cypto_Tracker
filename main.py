@@ -37,13 +37,11 @@ def Tracker():
 
 labelBTC = tk.Label(canva, text="BitCoin Price", font=f1, bg="LightSteelBlue4")
 labelBTC.pack(anchor='nw', padx=2, pady=10) 
-
 labelBTCPrice = tk.Label(canva, font=f2, bg="LightSteelBlue4")
 labelBTCPrice.pack(anchor='nw', padx=7) 
 
 labelETH = tk.Label(canva, text="Ethereum Price", font=f1, bg="LightSteelBlue4")
 labelETH.pack(anchor='nw', padx=2, pady=10) 
-
 labelETHPrice = tk.Label(canva, font=f2, bg="LightSteelBlue4")
 labelETHPrice.pack(anchor='nw', padx=7) 
 
