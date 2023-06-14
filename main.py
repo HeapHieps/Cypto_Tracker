@@ -2,35 +2,58 @@ import requests
 import tkinter as tk
 from datetime import datetime
 
-def Tracker():
-    url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR"
-    response = requests.get(url).json()
-    price = response["USD"]
-    Updatedtime = datetime.now().strftime("%H:%M:%S")
+#-------------Format----------------------------
 
-    labelPrice.config(text = str(price)+ " $")
-    labelTime.config(text = "Updated at: " + Updatedtime)
+canva = tk.Tk()
+canva.geometry ("400x500")
+canva.title ("Crypto Tracker")
 
-    canvas.after(5000, Tracker) #Update Prices every 5 seconds
-
-canvas = tk.Tk()
-canvas.geometry ("400x500")
-canvas.title ("Tracker")
+canva.minsize(400,500)
+canva.configure(bg="LightSteelBlue4")
 
 f1 = ("arial", 22, "bold")
 f2 = ("arial", 20, "bold")
 f3 = ("arial", 16, "normal")
 
-label = tk.Label(canvas, text="BitCoin Price", font=f1)
-label.pack(anchor='w', padx=10, pady=10) 
+#-------------Functions------------------------
 
-labelPrice = tk.Label(canvas, font=f2)
-labelPrice.pack(anchor='w', padx=10) 
+def GetCrypto(crypto):
+    url = f"https://min-api.cryptocompare.com/data/price?fsym={crypto}&tsyms=USD,JPY,EUR"
+    response = requests.get(url).json()
+    return response.get("USD")
 
-labelTime = tk.Label(canvas, font=f3)
-labelTime.pack(anchor='center', pady=50)
+def Tracker():
+    BTC_Prices = GetCrypto("BTC")
+    ETH_Prices = GetCrypto("ETH")
+    Updatedtime = datetime.now().strftime("%H:%M:%S")
+
+    labelBTCPrice.config(text=f"${BTC_Prices}")
+    labelETHPrice.config(text=f"${ETH_Prices}")
+    labelTime.config(text = "Updated at: " + Updatedtime)
+
+    canva.after(2000, Tracker) #Update Prices every 2 seconds
+
+#-------------Display-------------------------
+
+labelBTC = tk.Label(canva, text="BitCoin Price", font=f1, bg="LightSteelBlue4")
+labelBTC.pack(anchor='nw', padx=2, pady=10) 
+
+labelBTCPrice = tk.Label(canva, font=f2, bg="LightSteelBlue4")
+labelBTCPrice.pack(anchor='nw', padx=7) 
+
+labelETH = tk.Label(canva, text="Ethereum Price", font=f1, bg="LightSteelBlue4")
+labelETH.pack(anchor='nw', padx=2, pady=10) 
+
+labelETHPrice = tk.Label(canva, font=f2, bg="LightSteelBlue4")
+labelETHPrice.pack(anchor='nw', padx=7) 
+
+
+
+labelTime = tk.Label(canva, font=f3, bg="LightSteelBlue4")
+labelETHPrice.pack(anchor='nw', padx=7) 
+
 
 Tracker()
 
-canvas.mainloop()
+canva.mainloop()
 
