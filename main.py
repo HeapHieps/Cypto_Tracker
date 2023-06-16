@@ -48,7 +48,7 @@ labelETHPrice.pack(anchor='nw', padx=7)
 
 
 labelTime = tk.Label(canva, font=f3, bg="LightSteelBlue4")
-labelETHPrice.pack(anchor='nw', padx=7) 
+labelTime.pack(anchor='nw', padx=7) 
 
 
 Tracker()
